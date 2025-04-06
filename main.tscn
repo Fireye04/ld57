@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfy1lk2of0h5b"]
+
+[ext_resource type="Script" uid="uid://cqtytqqs3assj" path="res://Main.cs" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bfmm3fmpjk53w" path="res://ui.tscn" id="1_ig7tw"]
+[ext_resource type="Resource" uid="uid://cyve03sff6km7" path="res://main.dialogue" id="2_h2yge"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_0xm2m")
+dialogue = ExtResource("2_h2yge")
+
+[node name="UI" parent="." instance=ExtResource("1_ig7tw")]
