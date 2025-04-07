@@ -1,12 +1,15 @@
 using Godot;
 using System;
 
-public partial class Background : AnimationPlayer {
+public partial class Background : Control {
+
+    public AnimationPlayer anim;
 
     public override void _Ready() {
 
         GameState.GetGSInstance().TalkingStatus += (val) => setTalking(val);
         GameState.GetGSInstance().EmotionChange += (val) => setEmotion(val);
+        anim = GetNode<AnimationPlayer>("%Anim");
     }
 
     public String speaking = "idle";
@@ -19,7 +22,7 @@ public partial class Background : AnimationPlayer {
         } else {
             speaking = "idle";
         }
-        Play(speaking + "_" + emotion + "_nike");
+        anim.Play(speaking + "_" + emotion + "_nike");
     }
     public void setEmotion(int val) {
         switch (val) {
@@ -27,12 +30,10 @@ public partial class Background : AnimationPlayer {
             emotion = "happy";
             break;
         }
-
         case 1: {
             emotion = "angry";
             break;
         }
-
         case 2: {
             emotion = "concerned";
             break;
@@ -41,6 +42,6 @@ public partial class Background : AnimationPlayer {
             break;
         }
         }
-        Play(speaking + "_" + emotion + "_nike");
+        anim.Play(speaking + "_" + emotion + "_nike");
     }
 }

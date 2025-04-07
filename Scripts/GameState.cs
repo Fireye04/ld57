@@ -23,6 +23,15 @@ public partial class GameState : Node {
     [Signal]
     public delegate void TalkingStatusEventHandler(bool isTalking);
 
+    [Signal]
+    public delegate void FadeOutEventHandler();
+
+    [Signal]
+    public delegate void FadeInEventHandler();
+
+    public void toBlack() { EmitSignal(SignalName.FadeOut); }
+    public void fromBlack() { EmitSignal(SignalName.FadeIn); }
+
     private int Confidence = 10;
 
     public int confidence {
