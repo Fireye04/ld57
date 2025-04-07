@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Background : CanvasLayer {
+public partial class Background : Control {
 
     public AnimationPlayer anim;
 

@@ -1,15 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfy1lk2of0h5b"]
+[gd_scene load_steps=6 format=3 uid="uid://cfy1lk2of0h5b"]
 
 [ext_resource type="Script" uid="uid://cqtytqqs3assj" path="res://Scripts/Main.cs" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bfmm3fmpjk53w" path="res://ui.tscn" id="1_ig7tw"]
 [ext_resource type="Resource" uid="uid://cyve03sff6km7" path="res://Assets/Resources/main.dialogue" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dptx0g5c6kt8t" path="res://background.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://domoxhlrsk6qw" path="res://fader.tscn" id="5_lquwl"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 dialogue = ExtResource("2_h2yge")
 
-[node name="UI" parent="." instance=ExtResource("1_ig7tw")]
-follow_viewport_enabled = true
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" parent="." instance=ExtResource("4_1bvp3")]
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_ig7tw")]
+z_index = 1
+
+[node name="Background" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
+
+[node name="fader" parent="CanvasLayer" instance=ExtResource("5_lquwl")]

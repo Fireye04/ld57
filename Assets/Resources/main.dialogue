@@ -65,6 +65,7 @@ Nike: Heya flynn! So, what's it now?
 
 ~ superiority
 Flynn: ...
+do GameState.emotion = 2
 Nike: I'll drop it, but you should really make a habit of confiding in your friends.
 - Yeah they're right (truth | -2) [if GameState.confidence >= 2]
 	do GameState.confidence -= 2
@@ -73,6 +74,7 @@ Nike: I'll drop it, but you should really make a habit of confiding in your frie
 	Nike: It's okay, you can tell me if and when you're ready.
 	do GameState.confidence += 3
 	Flynn: ... Thanks
+	do GameState.emotion = 0
 	Nike: Now you gonna grab a controller or what?
 	Flynn: Hah, sounds good.
 	=> section2/playin_games
@@ -84,10 +86,12 @@ Nike: I'll drop it, but you should really make a habit of confiding in your frie
 
 ~ E_confiding_in_friends
 Flynn: Nothing's wrong, man. Get the fuck off my back.
+do GameState.emotion = 1
 Nike: Hey, chill out I'm just trying to help.
 - De-escalate (-2) [if GameState.confidence >= 2]
 	do GameState.confidence -= 2
 	Flynn: Fine. Sorry.
+	do GameState.emotion = 2
 	Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
 	Nike: I'm here if you change your mind though.
 	Flynn: Thanks. Wanna play some games?
@@ -111,6 +115,7 @@ Nike: Hey, chill out I'm just trying to help.
 		- De-escalate (-2) [if GameState.confidence >= 2]
 			do GameState.confidence -= 2
 			Flynn: Fuck, I didn't mean that Nike, I'm sorry. 
+			do GameState.emotion = 2
 			Nike: Hah. Yeah, me too. Let's just play some games and cool off, yeah?
 			=> section2/playin_games
 		- Escalate (+3)
@@ -125,10 +130,12 @@ Nike: Hey, chill out I'm just trying to help.
 
 ~ E_talking_down
 Flynn: Don't talk down to me man. I can deal with stuff on my own.
+do GameState.emotion = 1
 Nike: Hey, chill out. I'm just tryna be there for you.
 - De-escalate (-2) [if GameState.confidence >= 2]
 	do GameState.confidence -= 2
 	Flynn: Sorry, I know. Thanks.
+	do GameState.emotion = 2
 	Flynn: I just need to chill out for a bit yeah?
 	Nike: For sure. Let's play some games?
 	Flynn: Let's play some games.
@@ -140,6 +147,7 @@ Nike: Hey, chill out. I'm just tryna be there for you.
 	- De-escalate (-2) [if GameState.confidence >= 2]
 		do GameState.confidence -= 2
 		Flynn: Fuck, I'm Sorry. That's on me.
+		do GameState.emotion = 1
 		Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
 		Nike: I'm here if you change your mind though.
 		Flynn: Thanks. Wanna play some games?
