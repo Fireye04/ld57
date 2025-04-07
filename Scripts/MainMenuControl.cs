@@ -5,6 +5,16 @@ using System.Diagnostics;
 public partial class MainMenuControl : Control
 {
     /*********************************************************************************************/
+    /** Engine Events */
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        InitMenu();
+    }
+
+    /*********************************************************************************************/
     /** GD Signals */
 
     private void OnPlayButtonPressed()
@@ -42,32 +52,32 @@ public partial class MainMenuControl : Control
     [Export]
     Container creditsMenu;
 
+    protected virtual void InitMenu()
+    {
+        mainMenu.Visible = true;
+        settingsMenu.Visible = false;
+        creditsMenu.Visible = false;
+    }
 
     public virtual void StartGame()
     {
-        Debug.WriteLine("start game");
         GetTree().ChangeSceneToFile(gameNodePath);
     }
 
     public virtual void ToggleSettings()
     {
-        Debug.WriteLine("settings");
-
         settingsMenu.Visible = !settingsMenu.Visible;
         mainMenu.Visible = !settingsMenu.Visible;
     }
 
     public virtual void ToggleCredits()
     {
-        Debug.WriteLine("credits");
-
         creditsMenu.Visible = !creditsMenu.Visible;
         mainMenu.Visible = !creditsMenu.Visible;
     }
 
     public virtual void Exit()
     {
-        Debug.WriteLine("exit");
         GetTree().Quit();
     }
 }

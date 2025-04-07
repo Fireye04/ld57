@@ -7,7 +7,7 @@ public partial class VolumeSlider : HSlider
     [Export]
     protected string audioBusName = "Master";
 
-    public virtual void _Ready()
+    public override void _Ready()
     {
         base._Ready();
 
@@ -18,8 +18,5 @@ public partial class VolumeSlider : HSlider
     {
         int busIndex = AudioServer.GetBusIndex(audioBusName);
         AudioServer.SetBusVolumeLinear(busIndex, newValue);
-
-        Debug.WriteLine("new audio!");
     }
-
 }
