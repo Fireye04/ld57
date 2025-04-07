@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ld57"
-run/main_scene="uid://cfy1lk2of0h5b"
+run/main_scene="uid://1mmyisy3hby8"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
