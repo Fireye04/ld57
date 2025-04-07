@@ -1,15 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfmm3fmpjk53w"]
+[gd_scene load_steps=5 format=3 uid="uid://bfmm3fmpjk53w"]
 
-[ext_resource type="Script" uid="uid://dkpdxplf7r57u" path="res://ConfidenceLabel.cs" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://dkpdxplf7r57u" path="res://Scripts/ConfidenceLabel.cs" id="1_fyqef"]
+
+[sub_resource type="Gradient" id="Gradient_fyqef"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.52549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m6e0p"]
+gradient = SubResource("Gradient_fyqef")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyqef"]
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 357.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture1D_m6e0p")
+expand_mode = 1
 
-[node name="Confidence" type="Label" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 0
+offset_right = 356.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="Confidence" type="Label" parent="TextureRect/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Confidence: 10"
+label_settings = SubResource("LabelSettings_fyqef")
 script = ExtResource("1_fyqef")
