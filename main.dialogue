@@ -29,9 +29,15 @@ Nike: Hey, come on in. So what's it now.
 			Nike: If you insist, but if you've really got something eathing at you it's gonna come out one way or another.
 			Nike: In my opinion it'd be better to have out with it in a healthy way than do so otherwise.
 			- Don't talk down to me (Escalate)
-			
+				=> E_talking_down
+			- They're probably right (Self control | -1) [if GameState.confidence >= 1]
+				do GameState.confidence -= 1
 			Flynn: Humor me?
-			Nike: Fine.
+			Nike: Fine. I'm here for you though, you know that right?
+			do GameState.confidence += 2
+			Flynn: Yeah. Thanks. I really appreciate it.
+			Nike: Now you gonna grab a controller or what?
+			Flynn: Hah, sounds good.
 		- Tell them the truth, idiot (Truth | -2) [if GameState.confidence >= 2]
 			do GameState.confidence -= 2
 			Flynn: I'm...
@@ -40,6 +46,7 @@ Nike: Hey, come on in. So what's it now.
 			Nike: Take it from the top. What happened?
 			Flynn: I dunno man. I just feel like I wake up every day and do the exact same thing.
 			Flynn: Day in and day out.
+			
 => playin_games
 => END
 
