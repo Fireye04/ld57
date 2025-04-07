@@ -17,6 +17,12 @@ public partial class GameState : Node {
     [Signal]
     public delegate void ConfidenceChangeEventHandler(int trust);
 
+    [Signal]
+    public delegate void EmotionChangeEventHandler(int emotion);
+
+    [Signal]
+    public delegate void TalkingStatusEventHandler(bool isTalking);
+
     private int Confidence = 10;
 
     public int confidence {
@@ -27,5 +33,26 @@ public partial class GameState : Node {
         }
     }
 
+    private EEmotion Emotion = EEmotion.HAPPY;
+
+    public EEmotion emotion {
+        get { return Emotion; }
+        set {
+            EmitSignal(SignalName.EmotionChange, (int)value);
+            Emotion = value;
+        }
+    }
+
+    private bool Talking = false;
+
+    public bool talking {
+        get { return Talking; }
+        set {
+            EmitSignal(SignalName.TalkingStatus, value);
+            Talking = value;
+        }
+    }
     public int bathroomCount = 0;
+
+    public int nikeRep = 0;
 }

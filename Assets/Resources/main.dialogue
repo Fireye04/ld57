@@ -1,0 +1,155 @@
+import "res://Assets/Resources/endings.dialogue" as endings
+import "res://Assets/Resources/section2.dialogue" as section2
+
+~ start
+do GameState.confidence = 10
+Knock Knock Knock
+Flynn: Hey, Nike. How you been?
+Nike: Heya flynn! So, what's it now?
+- Nothing. (Lie)
+	Flynn: Nothing.
+	Nike: Sure, bud.
+	Flynn: What, you sound like you don't believe me.
+	Nike: I don't.
+	Nike: Every time you call me up and ask to come over outta fuckin' nowhere, you got something going on.
+	Nike: So out with it. 
+	=> superiority
+- What do mean? (Misdirect | -1) [if GameState.confidence >= 1]
+	do GameState.confidence -= 1
+	Flynn: What do you mean?
+	Nike: Fuck, Flynn, every time you call me up and ask to come over outta fuckin' nowhere, you got something going on.
+	Nike: So out with it. 
+	- Nothing's wrong. (Lie)
+		Flynn: It's really nothing this time. Now can we play games or what? 
+		Nike: I don't believe you.
+		Flynn: Well it's the truth.
+		Nike: Sure, bud. 
+		=> superiority
+	- Am I that predictable? (Misdirect | -1) [if GameState.confidence >= 1]
+		do GameState.confidence -= 1
+		Flynn: Fuck, am I really that predictable?
+		Nike: You really want me to answer that?
+		Flynn: Guess not.
+		Nike: So out with it. 
+		- Can we not talk about it? (Misdirect)
+			do GameState.emotion = 2
+			Flynn: Can we just play video games and pretend there's nothing wrong?
+			Nike: If you insist, but if you've really got something eathing at you it's gonna come out one way or another.
+			Nike: In my opinion it'd be better to have out with it in a healthy way than do so otherwise.
+			- Don't talk down to me (Escalate +1)
+				do GameState.confidence += 1
+				=> E_talking_down
+			- They're probably right (Self control | -1) [if GameState.confidence >= 1]
+				do GameState.confidence -= 1
+			Flynn: Humor me?
+			Nike: Fine. I'm here for you though, you know that right?
+			do GameState.confidence += 2
+			Flynn: Yeah. Thanks. I really appreciate it.
+			do GameState.emotion = 0
+			Nike: Now you gonna grab a controller or what?
+			Flynn: Hah, sounds good.
+		- Tell them the truth, idiot (Truth | -2) [if GameState.confidence >= 2]
+			do GameState.confidence -= 2
+			Flynn: I'm...
+			Flynn: It's just that ...
+			Flynn: Fuck, I don't know, man.
+			Nike: Take it from the top. What happened?
+			Flynn: I dunno man. I just feel like I wake up every day and do the exact same thing.
+			Flynn: Day in and day out.
+			Nike: Whoa, that sounds awful. How about you come in and tell me about it yeah?
+			do GameState.confidence += 3
+			=> section2/heart_to_heart
+=> section2/playin_games
+=> END
+
+~ superiority
+Flynn: ...
+Nike: I'll drop it, but you should really make a habit of confiding in your friends.
+- Yeah they're right (truth | -2) [if GameState.confidence >= 2]
+	do GameState.confidence -= 2
+	Flynn: yeah... 
+	Flynn: Sorry.
+	Nike: It's okay, you can tell me if and when you're ready.
+	do GameState.confidence += 3
+	Flynn: ... Thanks
+	Nike: Now you gonna grab a controller or what?
+	Flynn: Hah, sounds good.
+	=> section2/playin_games
+- No, fuck that. (Escalate | +1)
+	do GameState.confidence += 1
+	=> E_confiding_in_friends
+=> END
+
+
+~ E_confiding_in_friends
+Flynn: Nothing's wrong, man. Get the fuck off my back.
+Nike: Hey, chill out I'm just trying to help.
+- De-escalate (-2) [if GameState.confidence >= 2]
+	do GameState.confidence -= 2
+	Flynn: Fine. Sorry.
+	Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
+	Nike: I'm here if you change your mind though.
+	Flynn: Thanks. Wanna play some games?
+	Nike: Sounds good to me.
+	=> section2/playin_games
+- Escalate (+3)
+	do GameState.confidence += 3
+	Flynn: Well you're not. Even if there was something wrong I wouldn't want your help anyway.
+	Nike: Pushing me away isn't going to help anything.
+	Nike: But fine, if you really don't want to talk about it, let's just play some games and pretend everything's fine.
+	- De-escalate (-2) [if GameState.confidence >= 2]
+		do GameState.confidence -= 2
+		Flynn: Yes. Let's.
+		=> section2/playin_games
+	- Escalate (+3)
+		do GameState.confidence += 3
+		Flynn: Not gonna help anything? Not gonna help anything?!
+		Flynn: Maybe it'll help take you and your perfect little life down a fucking peg!
+		Nike: Perfect life? Do you even fucking know me?!
+		Nike: I haven't moved states six times in four fucking years for my life to be called "perfect"
+		- De-escalate (-2) [if GameState.confidence >= 2]
+			do GameState.confidence -= 2
+			Flynn: Fuck, I didn't mean that Nike, I'm sorry. 
+			Nike: Hah. Yeah, me too. Let's just play some games and cool off, yeah?
+			=> section2/playin_games
+		- Escalate (+3)
+			do GameState.confidence += 3
+			Flynn: "Oh boo-fucking-hoo I moved around a few times!"
+			Flynn: "I'm so sad I don't have enough skateboarding medals."
+			Flynn: At least you don't fucking hate yourself. 
+			Nike: I... Wow. Fuck off, Flynn.
+			The door slams.
+			=> endings/push_em_away
+=> END!
+
+~ E_talking_down
+Flynn: Don't talk down to me man. I can deal with stuff on my own.
+Nike: Hey, chill out. I'm just tryna be there for you.
+- De-escalate (-2) [if GameState.confidence >= 2]
+	do GameState.confidence -= 2
+	Flynn: Sorry, I know. Thanks.
+	Flynn: I just need to chill out for a bit yeah?
+	Nike: For sure. Let's play some games?
+	Flynn: Let's play some games.
+	=> section2/playin_games
+- Escalate (+3)
+	do GameState.confidence += 3
+	Flynn: And I didn't ask. I don't need your snark on top of everything else.
+	Nike: Hey, that's not fair. If you don't feel like showing me basic respect, you can leave. 
+	- De-escalate (-2) [if GameState.confidence >= 2]
+		do GameState.confidence -= 2
+		Flynn: Fuck, I'm Sorry. That's on me.
+		Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
+		Nike: I'm here if you change your mind though.
+		Flynn: Thanks. Wanna play some games?
+		Nike: Sounds good to me.
+		=> section2/playin_games
+	- Escalate (+3)
+		do GameState.confidence += 3
+		Flynn: Maybe I will.
+		Nike: Cool. Bye Flynn.
+		=> endings/push_em_away
+=> END!
+
+
+

@@ -1,15 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfmm3fmpjk53w"]
+[gd_scene load_steps=3 format=3 uid="uid://bfmm3fmpjk53w"]
 
-[ext_resource type="Script" uid="uid://dkpdxplf7r57u" path="res://ConfidenceLabel.cs" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://dkpdxplf7r57u" path="res://Scripts/ConfidenceLabel.cs" id="1_fyqef"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyqef"]
+font_size = 46
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -341.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_constants/margin_right = 15
 
 [node name="Confidence" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Confidence: 10"
+label_settings = SubResource("LabelSettings_fyqef")
 script = ExtResource("1_fyqef")
