@@ -1,0 +1,150 @@
+[gd_scene load_steps=16 format=3 uid="uid://dptx0g5c6kt8t"]
+
+[ext_resource type="Texture2D" uid="uid://tu1k1my8ol0m" path="res://Assets/Visual/nike_door_happy.jpg" id="1_gjjrj"]
+[ext_resource type="Texture2D" uid="uid://dw7u0vr88aeyd" path="res://Assets/Visual/nike_door_happy_2.jpg" id="2_vvxqx"]
+[ext_resource type="Texture2D" uid="uid://1egcjv0ji5ed" path="res://Assets/Visual/nike_door_concerned_2.jpg" id="3_cdpnt"]
+[ext_resource type="Texture2D" uid="uid://68s26fnuey8f" path="res://Assets/Visual/nike_door_concerned_1.jpg" id="4_8u6ia"]
+[ext_resource type="Texture2D" uid="uid://bxuhyudqu7ccb" path="res://Assets/Visual/nike_door_angry_2.jpg" id="5_6i7po"]
+[ext_resource type="Texture2D" uid="uid://cmgbpx1q6k8e5" path="res://Assets/Visual/nike_door_angry_1.jpg" id="6_e8087"]
+[ext_resource type="Script" uid="uid://brp1ni2vw0ku2" path="res://Scripts/Background.cs" id="7_b3bg0"]
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+resource_name = "talk_happy_nike"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_vvxqx"), ExtResource("1_gjjrj")]
+}
+
+[sub_resource type="Animation" id="Animation_kek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gjjrj")]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "idle_happy_nike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gjjrj")]
+}
+
+[sub_resource type="Animation" id="Animation_efxa6"]
+resource_name = "talk_concerned_nike"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_cdpnt"), ExtResource("4_8u6ia")]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "idle_concerned_nike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8u6ia")]
+}
+
+[sub_resource type="Animation" id="Animation_ycdy4"]
+resource_name = "talk_angry_nike"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_6i7po"), ExtResource("6_e8087")]
+}
+
+[sub_resource type="Animation" id="Animation_w48qg"]
+resource_name = "idle_angry_nike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_e8087")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4c57u"]
+_data = {
+&"RESET": SubResource("Animation_kek77"),
+&"idle_angry_nike": SubResource("Animation_w48qg"),
+&"idle_concerned_nike": SubResource("Animation_4c57u"),
+&"idle_happy_nike": SubResource("Animation_272bh"),
+&"talk_angry_nike": SubResource("Animation_ycdy4"),
+&"talk_concerned_nike": SubResource("Animation_efxa6"),
+&"talk_happy_nike": SubResource("Animation_5vw27")
+}
+
+[node name="Background" type="CanvasLayer"]
+layer = -1
+script = ExtResource("7_b3bg0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gjjrj")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4c57u")
+}
