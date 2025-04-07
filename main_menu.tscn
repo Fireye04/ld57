@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://1mmyisy3hby8"]
+
+[ext_resource type="Theme" uid="uid://bicnfunkgtmsp" path="res://main.tres" id="1_06t4h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhts7"]
+font_size = 80
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -76.0
+offset_right = 347.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Main"]
+layout_mode = 2
+text = "Nike's House"
+label_settings = SubResource("LabelSettings_rhts7")
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Main"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_06t4h")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="Main"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("1_06t4h")
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="Main"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_06t4h")
+text = "Credits"
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Credits" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreditList" type="RichTextLabel" parent="Credits"]
+layout_mode = 2

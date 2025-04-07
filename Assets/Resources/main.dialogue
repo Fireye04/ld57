@@ -48,9 +48,10 @@ Nike: Heya flynn! So, what's it now?
 			do GameState.emotion = 0
 			Nike: Now you gonna grab a controller or what?
 			Flynn: Hah, sounds good.
-		- Tell them the truth, idiot (Truth | -2) [if GameState.confidence >= 2]
-			do GameState.confidence -= 2
+		- Tell them the truth, idiot (Truth | -6) [if GameState.confidence >= 6]
+			do GameState.confidence -= 6
 			Flynn: I'm...
+			do GameState.emotion = 2
 			Flynn: It's just that ...
 			Flynn: Fuck, I don't know, man.
 			Nike: Take it from the top. What happened?
