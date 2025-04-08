@@ -177,13 +177,13 @@ theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[b]Writing & Game Design[/b]
 - Kai Koehler -
-[b]Programming[/b]
-- Kai Koehler -
-- Ben Seckeler -
 [b]Music[/b]
 - MelancholyP -
 [b]Art[/b]
-- Kiana Koehler -"
+- Kiana Koehler -
+[b]Programming[/b]
+- Kai Koehler -
+- Ben Seckeler -"
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="CanvasLayer/Credits"]

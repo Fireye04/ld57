@@ -2,7 +2,7 @@ import "res://Assets/Resources/endings.dialogue" as endings
 import "res://Assets/Resources/section2.dialogue" as section2
 
 ~ start
-do GameState.confidence = 10
+do GameState.confidence = 4
 Knock Knock Knock
 Flynn: Hey, Nike. How you been?
 Nike: Heya flynn! So, what's it now?
@@ -49,8 +49,8 @@ Nike: Heya flynn! So, what's it now?
 			do GameState.emotion = 0
 			Nike: Now you gonna grab a controller or what?
 			Flynn: Hah, sounds good.
-		- Tell them the truth, idiot (Truth | -6) [if GameState.confidence >= 6]
-			do GameState.confidence -= 6
+		- Tell them the truth, idiot (Truth | -2) [if GameState.confidence >= 2]
+			do GameState.confidence -= 2
 			do GameState.music("emotional")
 			Flynn: I'm...
 			do GameState.emotion = 2
