@@ -5,11 +5,19 @@ public partial class Background : Control {
 
     public AnimationPlayer anim;
 
+    public bool closed;
     public override void _Ready() {
 
         GameState.GetGSInstance().TalkingStatus += (val) => setTalking(val);
         GameState.GetGSInstance().EmotionChange += (val) => setEmotion(val);
+        GameState.GetGSInstance().CloseDoor += () => doorClose();
         anim = GetNode<AnimationPlayer>("%Anim");
+        closed = false;
+    }
+
+    public void doorClose() {
+        anim.Play("door_closed");
+        closed = true;
     }
 
     public String speaking = "idle";
@@ -17,6 +25,9 @@ public partial class Background : Control {
     public String emotion = "happy";
 
     public void setTalking(bool val) {
+        if (closed) {
+            return;
+        }
         if (val) {
             speaking = "talk";
         } else {
@@ -25,6 +36,9 @@ public partial class Background : Control {
         anim.Play(speaking + "_" + emotion + "_nike");
     }
     public void setEmotion(int val) {
+        if (closed) {
+            return;
+        }
         switch (val) {
         case 0: {
             emotion = "happy";
