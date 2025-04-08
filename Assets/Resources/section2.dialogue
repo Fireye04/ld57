@@ -1,5 +1,5 @@
 ~ playin_games
-BEEP BOOP MOTHERFUCKER
+do GameState.toggleEnd()
 => END
 
 ~ telling_them
@@ -39,5 +39,5 @@ else
 => END
 
 ~ heart_to_heart
-friendship!!!
+do GameState.toggleEnd()
 => END!

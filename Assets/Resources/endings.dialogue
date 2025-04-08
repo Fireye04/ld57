@@ -5,4 +5,5 @@ Flynn: I'm fine.
 Flynn: I'm fine.
 Flynn: I'm FINE.
 Ending 1
+do GameState.toggleEnd()
 => END!

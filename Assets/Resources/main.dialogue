@@ -33,6 +33,7 @@ Nike: Heya flynn! So, what's it now?
 		Nike: So out with it. 
 		- Can we not talk about it? (Misdirect)
 			do GameState.emotion = 2
+			do GameState.music("emotional")
 			Flynn: Can we just play video games and pretend there's nothing wrong?
 			Nike: If you insist, but if you've really got something eathing at you it's gonna come out one way or another.
 			Nike: In my opinion it'd be better to have out with it in a healthy way than do so otherwise.
@@ -50,6 +51,7 @@ Nike: Heya flynn! So, what's it now?
 			Flynn: Hah, sounds good.
 		- Tell them the truth, idiot (Truth | -6) [if GameState.confidence >= 6]
 			do GameState.confidence -= 6
+			do GameState.music("emotional")
 			Flynn: I'm...
 			do GameState.emotion = 2
 			Flynn: It's just that ...
@@ -85,11 +87,13 @@ Nike: I'll drop it, but you should really make a habit of confiding in your frie
 
 
 ~ E_confiding_in_friends
+do GameState.music("fast")
 Flynn: Nothing's wrong, man. Get the fuck off my back.
 do GameState.emotion = 1
 Nike: Hey, chill out I'm just trying to help.
 - De-escalate (-2) [if GameState.confidence >= 2]
 	do GameState.confidence -= 2
+	do GameState.music("main")
 	Flynn: Fine. Sorry.
 	do GameState.emotion = 2
 	Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
@@ -104,6 +108,7 @@ Nike: Hey, chill out I'm just trying to help.
 	Nike: But fine, if you really don't want to talk about it, let's just play some games and pretend everything's fine.
 	- De-escalate (-2) [if GameState.confidence >= 2]
 		do GameState.confidence -= 2
+		do GameState.music("main")
 		Flynn: Yes. Let's.
 		=> section2/playin_games
 	- Escalate (+3)
@@ -114,6 +119,7 @@ Nike: Hey, chill out I'm just trying to help.
 		Nike: I haven't moved states six times in four fucking years for my life to be called "perfect"
 		- De-escalate (-2) [if GameState.confidence >= 2]
 			do GameState.confidence -= 2
+			do GameState.music("main")
 			Flynn: Fuck, I didn't mean that Nike, I'm sorry. 
 			do GameState.emotion = 2
 			Nike: Hah. Yeah, me too. Let's just play some games and cool off, yeah?
@@ -124,16 +130,19 @@ Nike: Hey, chill out I'm just trying to help.
 			Flynn: "I'm so sad I don't have enough skateboarding medals."
 			Flynn: At least you don't fucking hate yourself. 
 			Nike: I... Wow. Fuck off, Flynn.
-			The door slams.
+			do GameState.doorClose()
+			do GameState.music("ominous")
 			=> endings/push_em_away
 => END!
 
 ~ E_talking_down
+do GameState.music("fast")
 Flynn: Don't talk down to me man. I can deal with stuff on my own.
 do GameState.emotion = 1
 Nike: Hey, chill out. I'm just tryna be there for you.
 - De-escalate (-2) [if GameState.confidence >= 2]
 	do GameState.confidence -= 2
+	do GameState.music("main")
 	Flynn: Sorry, I know. Thanks.
 	do GameState.emotion = 2
 	Flynn: I just need to chill out for a bit yeah?
@@ -146,6 +155,7 @@ Nike: Hey, chill out. I'm just tryna be there for you.
 	Nike: Hey, that's not fair. If you don't feel like showing me basic respect, you can leave. 
 	- De-escalate (-2) [if GameState.confidence >= 2]
 		do GameState.confidence -= 2
+		do GameState.music("main")
 		Flynn: Fuck, I'm Sorry. That's on me.
 		do GameState.emotion = 1
 		Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
@@ -157,6 +167,8 @@ Nike: Hey, chill out. I'm just tryna be there for you.
 		do GameState.confidence += 3
 		Flynn: Maybe I will.
 		Nike: Cool. Bye Flynn.
+		do GameState.doorClose()
+		do GameState.music("ominous")
 		=> endings/push_em_away
 => END!
 

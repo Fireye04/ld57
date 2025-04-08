@@ -1,16 +1,17 @@
 [gd_scene load_steps=9 format=3 uid="uid://1mmyisy3hby8"]
 
 [ext_resource type="Theme" uid="uid://bicnfunkgtmsp" path="res://main.tres" id="1_06t4h"]
-[ext_resource type="Texture2D" uid="uid://bxuhyudqu7ccb" path="res://Assets/Visual/nike_door_angry_2.jpg" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://d1kxyjuvxjg80" path="res://Scripts/MainMenuControl.cs" id="1_fu7sn"]
+[ext_resource type="PackedScene" uid="uid://x3go6bqhxe1q" path="res://main.tscn" id="2_glbon"]
+[ext_resource type="Texture2D" uid="uid://d2eoit6optlpe" path="res://Assets/Visual/door_closed.jpg" id="2_jix8l"]
 [ext_resource type="Script" uid="uid://2yb63agu3bva" path="res://Scripts/VolumeSlider.cs" id="4_jix8l"]
 
 [sub_resource type="Theme" id="Theme_06t4h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rhts7"]
 font_size = 80
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_06t4h"]
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_fu7sn"]
 
@@ -22,53 +23,56 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu7sn")
-gameNodePath = "res://main.tscn"
-mainMenu = NodePath("Main")
-settingsMenu = NodePath("Settings")
-creditsMenu = NodePath("Credits")
+gameNodePath = ExtResource("2_glbon")
+mainMenu = NodePath("CanvasLayer/Main")
+settingsMenu = NodePath("CanvasLayer/Settings")
+creditsMenu = NodePath("CanvasLayer/Credits")
 
-[node name="BackgroundImage" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackgroundImage" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7vrkn")
-expand_mode = 3
+texture = ExtResource("2_jix8l")
+expand_mode = 5
+stretch_mode = 5
 
-[node name="Main" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="Main" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -189.0
-offset_right = 299.0
-offset_bottom = 211.0
+offset_left = -350.0
+offset_top = -205.0
+offset_right = 350.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_06t4h")
 theme_override_constants/separation = 18
 
-[node name="Label" type="Label" parent="Main"]
+[node name="Label" type="Label" parent="CanvasLayer/Main"]
 layout_mode = 2
 text = "Nike's House"
 label_settings = SubResource("LabelSettings_rhts7")
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="Main"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/Main"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_06t4h")
 text = "Play"
-icon = SubResource("ViewportTexture_06t4h")
 
-[node name="SettingsButton" type="Button" parent="Main"]
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Main"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -77,7 +81,7 @@ size_flags_vertical = 3
 theme = ExtResource("1_06t4h")
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="Main"]
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Main"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -85,7 +89,7 @@ size_flags_horizontal = 4
 theme = ExtResource("1_06t4h")
 text = "Credits"
 
-[node name="ExitButton" type="Button" parent="Main"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/Main"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -93,41 +97,40 @@ size_flags_horizontal = 4
 theme = ExtResource("1_06t4h")
 text = "Exit"
 
-[node name="Settings" type="VBoxContainer" parent="."]
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer"]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -189.0
-offset_right = 299.0
-offset_bottom = 211.0
+offset_left = -350.0
+offset_top = -200.0
+offset_right = 350.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_fu7sn")
 theme_override_constants/separation = 18
 
-[node name="Label" type="Label" parent="Settings"]
+[node name="Label" type="Label" parent="CanvasLayer/Settings"]
 layout_mode = 2
 text = "Settings"
 label_settings = SubResource("LabelSettings_rhts7")
 horizontal_alignment = 1
 
-[node name="VolumeSliderAndLabel" type="HSplitContainer" parent="Settings"]
+[node name="VolumeSliderAndLabel" type="HSplitContainer" parent="CanvasLayer/Settings"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Volume" type="Label" parent="Settings/VolumeSliderAndLabel"]
+[node name="Volume" type="Label" parent="CanvasLayer/Settings/VolumeSliderAndLabel"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 26
 text = "Volume"
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Settings/VolumeSliderAndLabel"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/VolumeSliderAndLabel"]
 layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
@@ -135,67 +138,65 @@ step = 0.05
 value = 1.0
 script = ExtResource("4_jix8l")
 
-[node name="BackButton" type="Button" parent="Settings"]
+[node name="BackButton" type="Button" parent="CanvasLayer/Settings"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_06t4h")
 text = "Back"
 
-[node name="Credits" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
+[node name="Credits" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -189.0
-offset_right = 299.0
-offset_bottom = 211.0
+offset_left = -350.0
+offset_top = -212.5
+offset_right = 350.0
+offset_bottom = 212.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Credits"]
+[node name="Label" type="Label" parent="CanvasLayer/Credits"]
 layout_mode = 2
+theme = ExtResource("1_06t4h")
 text = "Credits"
 label_settings = SubResource("LabelSettings_rhts7")
 horizontal_alignment = 1
 
-[node name="CreditList" type="RichTextLabel" parent="Credits"]
+[node name="CreditList" type="RichTextLabel" parent="CanvasLayer/Credits"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
+theme = ExtResource("1_06t4h")
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "[b]Role[/b]
-First Last
-
-[b]Role[/b]
-First Last
-
-[b]Role[/b]
-First Last
-
-[b]Role[/b]
-First Last"
+text = "[b]Writing & Game Design[/b]
+- Kai Koehler -
+[b]Programming[/b]
+- Kai Koehler -
+- Ben Seckeler -
+[b]Music[/b]
+- MelancholyP -
+[b]Art[/b]
+- Kiana Koehler -"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="Credits"]
+[node name="BackButton" type="Button" parent="CanvasLayer/Credits"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_06t4h")
 text = "Back"
 
-[connection signal="pressed" from="Main/PlayButton" to="." method="OnPlayButtonPressed"]
-[connection signal="pressed" from="Main/SettingsButton" to="." method="OnSettingsButtonPressed"]
-[connection signal="pressed" from="Main/CreditsButton" to="." method="OnCreditsButtonPressed"]
-[connection signal="pressed" from="Main/ExitButton" to="." method="OnExitButtonPressed"]
-[connection signal="value_changed" from="Settings/VolumeSliderAndLabel/HSlider" to="Settings/VolumeSliderAndLabel/HSlider" method="OnValueChanged"]
-[connection signal="pressed" from="Settings/BackButton" to="." method="OnSettingsButtonPressed"]
-[connection signal="pressed" from="Credits/BackButton" to="." method="OnCreditsButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Main/PlayButton" to="." method="OnPlayButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Main/SettingsButton" to="." method="OnSettingsButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CreditsButton" to="." method="OnCreditsButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Main/ExitButton" to="." method="OnExitButtonPressed"]
+[connection signal="value_changed" from="CanvasLayer/Settings/VolumeSliderAndLabel/HSlider" to="CanvasLayer/Settings/VolumeSliderAndLabel/HSlider" method="OnValueChanged"]
+[connection signal="pressed" from="CanvasLayer/Settings/BackButton" to="." method="OnSettingsButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Credits/BackButton" to="." method="OnCreditsButtonPressed"]

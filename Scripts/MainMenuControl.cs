@@ -2,13 +2,11 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class MainMenuControl : Control
-{
+public partial class MainMenuControl : Control {
     /*********************************************************************************************/
     /** Engine Events */
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         base._Ready();
 
         InitMenu();
@@ -17,31 +15,19 @@ public partial class MainMenuControl : Control
     /*********************************************************************************************/
     /** GD Signals */
 
-    private void OnPlayButtonPressed()
-    {
-        StartGame();
-    }
+    private void OnPlayButtonPressed() { StartGame(); }
 
-    private void OnSettingsButtonPressed()
-    {
-        ToggleSettings();
-    }
+    private void OnSettingsButtonPressed() { ToggleSettings(); }
 
-    private void OnCreditsButtonPressed()
-    {
-        ToggleCredits();
-    }
+    private void OnCreditsButtonPressed() { ToggleCredits(); }
 
-    private void OnExitButtonPressed()
-    {
-        Exit();
-    }
+    private void OnExitButtonPressed() { Exit(); }
 
     /*********************************************************************************************/
     /** Menu */
 
     [Export]
-    string gameNodePath;
+    PackedScene gameNodePath;
 
     [Export]
     Container mainMenu;
@@ -52,32 +38,25 @@ public partial class MainMenuControl : Control
     [Export]
     Container creditsMenu;
 
-    protected virtual void InitMenu()
-    {
+    protected virtual void InitMenu() {
         mainMenu.Visible = true;
         settingsMenu.Visible = false;
         creditsMenu.Visible = false;
     }
 
-    public virtual void StartGame()
-    {
-        GetTree().ChangeSceneToFile(gameNodePath);
+    public virtual void StartGame() {
+        GetTree().ChangeSceneToPacked(gameNodePath);
     }
 
-    public virtual void ToggleSettings()
-    {
+    public virtual void ToggleSettings() {
         settingsMenu.Visible = !settingsMenu.Visible;
         mainMenu.Visible = !settingsMenu.Visible;
     }
 
-    public virtual void ToggleCredits()
-    {
+    public virtual void ToggleCredits() {
         creditsMenu.Visible = !creditsMenu.Visible;
         mainMenu.Visible = !creditsMenu.Visible;
     }
 
-    public virtual void Exit()
-    {
-        GetTree().Quit();
-    }
+    public virtual void Exit() { GetTree().Quit(); }
 }

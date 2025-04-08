@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://wox8i3f16rii"]
+[gd_scene load_steps=5 format=3 uid="uid://wox8i3f16rii"]
 
 [ext_resource type="Theme" uid="uid://bicnfunkgtmsp" path="res://main.tres" id="1_1aiwb"]
+[ext_resource type="Script" uid="uid://kppmfncqwv8s" path="res://ToBeContinued.cs" id="1_yeww7"]
+[ext_resource type="Texture2D" uid="uid://d2eoit6optlpe" path="res://Assets/Visual/door_closed.jpg" id="2_nmsxl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5dbdu"]
 font_size = 80
@@ -8,12 +10,26 @@ outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [node name="To be continued" type="Control"]
+visible = false
+z_index = 100
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yeww7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nmsxl")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,3 +56,11 @@ theme = ExtResource("1_1aiwb")
 text = "Thank you for playing our game! We couldn't make the full story happen within the deadline, however we plan to update it afterwards with the full story, voice acting, and more! Feedback on what's here is greatly appreciated, and we hope you enjoyed what you did play. <3"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_1aiwb")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
