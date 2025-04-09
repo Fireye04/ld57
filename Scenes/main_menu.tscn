@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bicnfunkgtmsp" path="res://main.tres" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://d1kxyjuvxjg80" path="res://Scripts/MainMenuControl.cs" id="1_fu7sn"]
-[ext_resource type="PackedScene" uid="uid://x3go6bqhxe1q" path="res://main.tscn" id="2_glbon"]
+[ext_resource type="PackedScene" uid="uid://x3go6bqhxe1q" path="res://Scenes/main.tscn" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://d2eoit6optlpe" path="res://Assets/Visual/door_closed.jpg" id="2_jix8l"]
 [ext_resource type="Script" uid="uid://2yb63agu3bva" path="res://Scripts/VolumeSlider.cs" id="4_jix8l"]
 

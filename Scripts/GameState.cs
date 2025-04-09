@@ -107,4 +107,6 @@ public partial class GameState : Node {
         }
         }
     }
+
+    public void changeScene(PackedScene scene) {}
 }

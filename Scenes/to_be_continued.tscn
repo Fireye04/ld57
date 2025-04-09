@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://wox8i3f16rii"]
 
 [ext_resource type="Theme" uid="uid://bicnfunkgtmsp" path="res://main.tres" id="1_1aiwb"]
-[ext_resource type="Script" uid="uid://kppmfncqwv8s" path="res://ToBeContinued.cs" id="1_yeww7"]
+[ext_resource type="Script" uid="uid://kppmfncqwv8s" path="res://Scripts/ToBeContinued.cs" id="1_yeww7"]
 [ext_resource type="Texture2D" uid="uid://d2eoit6optlpe" path="res://Assets/Visual/door_closed.jpg" id="2_nmsxl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5dbdu"]

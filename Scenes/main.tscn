@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://x3go6bqhxe1q"]
 
 [ext_resource type="Script" uid="uid://cqtytqqs3assj" path="res://Scripts/Main.cs" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dptx0g5c6kt8t" path="res://background.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bfmm3fmpjk53w" path="res://ui.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dptx0g5c6kt8t" path="res://Scenes/background.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bfmm3fmpjk53w" path="res://Scenes/ui.tscn" id="2_0xm2m"]
 [ext_resource type="Resource" uid="uid://cyve03sff6km7" path="res://Assets/Resources/main.dialogue" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://wox8i3f16rii" path="res://to_be_continued.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://wox8i3f16rii" path="res://Scenes/to_be_continued.tscn" id="3_h2yge"]
 
 [node name="main" type="Control"]
 layout_mode = 3
