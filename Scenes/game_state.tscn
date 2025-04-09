@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dn6xxllg8ummg"]
 
-[ext_resource type="Script" uid="uid://urrholdvuxgb" path="res://Scripts/GameState.cs" id="1_30ppg"]
-[ext_resource type="AudioStream" uid="uid://cwr3ieijohnqt" path="res://Assets/Audio/OST/main_theme.mp3" id="2_018ao"]
+[ext_resource type="Script" uid="uid://urrholdvuxgb" path="res://Scripts/GameState.cs" id="1_buws8"]
+[ext_resource type="AudioStream" uid="uid://cwr3ieijohnqt" path="res://Assets/Audio/OST/main_theme.mp3" id="2_4o3n2"]
 
 [node name="GameState" type="Node"]
-script = ExtResource("1_30ppg")
+script = ExtResource("1_buws8")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_018ao")
+stream = ExtResource("2_4o3n2")
 autoplay = true
 parameters/looping = true

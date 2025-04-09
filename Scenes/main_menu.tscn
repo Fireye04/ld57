@@ -43,7 +43,6 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="Main" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -131,6 +130,7 @@ text = "Volume"
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/VolumeSliderAndLabel"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
@@ -146,6 +146,7 @@ theme = ExtResource("1_06t4h")
 text = "Back"
 
 [node name="Credits" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -45,7 +45,7 @@ public partial class MainMenuControl : Control {
     }
 
     public virtual void StartGame() {
-        GetTree().ChangeSceneToPacked(gameNodePath);
+        GameState.GetGSInstance().changeScene(gameNodePath);
     }
 
     public virtual void ToggleSettings() {

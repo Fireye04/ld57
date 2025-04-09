@@ -4,21 +4,7 @@ using System.Runtime.Serialization;
 
 public partial class GameState : Node {
 
-    private static GameState instance;
-
-    public static GameState GetGSInstance() { return instance; }
-
-    private void SetGSInstance(GameState newGSInstance) {
-        instance = newGSInstance;
-    }
-    public AudioStreamPlayer2D playr;
-
-    public override void _Ready() {
-        SetGSInstance(this);
-        playr = GetNode<AudioStreamPlayer2D>("AudioPlayer");
-        music("main");
-    }
-
+    // Signal declaration
     [Signal]
     public delegate void ConfidenceChangeEventHandler(int trust);
 
@@ -40,11 +26,23 @@ public partial class GameState : Node {
     [Signal]
     public delegate void EndEventHandler();
 
+    // Singleton Handler
+    private static GameState instance;
+
+    public static GameState GetGSInstance() { return instance; }
+
+    private void SetGSInstance(GameState newGSInstance) {
+        instance = newGSInstance;
+    }
+
+    // Signal triggers
     public void toBlack() { EmitSignal(SignalName.FadeOut); }
     public void fromBlack() { EmitSignal(SignalName.FadeIn); }
-
+    public void toggleEnd() { EmitSignal(SignalName.End); }
     public void doorClose() { EmitSignal(SignalName.CloseDoor); }
-    private int Confidence = 10;
+
+    // Variable declarations
+    private int Confidence;
 
     public int confidence {
         get { return Confidence; }
@@ -54,7 +52,7 @@ public partial class GameState : Node {
         }
     }
 
-    private EEmotion Emotion = EEmotion.HAPPY;
+    private EEmotion Emotion;
 
     public EEmotion emotion {
         get { return Emotion; }
@@ -64,7 +62,7 @@ public partial class GameState : Node {
         }
     }
 
-    private bool Talking = false;
+    private bool Talking;
 
     public bool talking {
         get { return Talking; }
@@ -73,11 +71,31 @@ public partial class GameState : Node {
             Talking = value;
         }
     }
-    public int bathroomCount = 0;
 
-    public int nikeRep = 0;
+    public AudioStreamPlayer2D playr;
 
-    public void toggleEnd() { EmitSignal(SignalName.End); }
+    public int bathroomCount;
+
+    public int nikeRep;
+
+    public override void _Ready() {
+        SetGSInstance(this);
+        playr = GetNode<AudioStreamPlayer2D>("AudioPlayer");
+        resetValues();
+    }
+
+    public void resetValues() {
+        confidence = 4;
+        emotion = EEmotion.HAPPY;
+        talking = false;
+        bathroomCount = 0;
+        nikeRep = 0;
+        music("main");
+    }
+
+    public void changeScene(PackedScene scene) {
+        GetTree().ChangeSceneToPacked(scene);
+    }
 
     public void music(String track) {
         switch (track) {
@@ -107,6 +125,4 @@ public partial class GameState : Node {
         }
         }
     }
-
-    public void changeScene(PackedScene scene) {}
 }
