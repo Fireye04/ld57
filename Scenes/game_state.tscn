@@ -6,7 +6,7 @@
 [node name="GameState" type="Node"]
 script = ExtResource("1_buws8")
 
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4o3n2")
 autoplay = true
 parameters/looping = true

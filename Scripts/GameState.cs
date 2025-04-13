@@ -69,7 +69,7 @@ public partial class GameState : Node {
         }
     }
 
-    public AudioStreamPlayer2D playr;
+    public AudioStreamPlayer playr;
 
     public int bathroomCount;
 
@@ -77,7 +77,7 @@ public partial class GameState : Node {
 
     public override void _Ready() {
         SetGSInstance(this);
-        playr = GetNode<AudioStreamPlayer2D>("AudioPlayer");
+        playr = GetNode<AudioStreamPlayer>("AudioPlayer");
         resetValues();
     }
 
