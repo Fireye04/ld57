@@ -3,12 +3,12 @@ using System;
 
 public partial class ToBeContinued : Control {
     [Export]
-    public PackedScene menu;
+    private PackedScene nextScene;
 
     public void _on_playagain_pressed() {
         GameState.GetGSInstance().playAgain();
     }
     public void _on_menu_pressed() {
-        GameState.GetGSInstance().changeScene(menu);
+        GameState.GetGSInstance().changeScene(nextScene);
     }
 }
