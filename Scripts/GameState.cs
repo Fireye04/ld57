@@ -12,7 +12,7 @@ public partial class GameState : Node {
     public delegate void EmotionChangeEventHandler(int emotion);
 
     [Signal]
-    public delegate void CloseDoorEventHandler();
+    public delegate void DoorIsOpenEventHandler(bool status);
 
     [Signal]
     public delegate void TalkingStatusEventHandler(bool isTalking);
@@ -22,9 +22,6 @@ public partial class GameState : Node {
 
     [Signal]
     public delegate void FadeInEventHandler();
-
-    [Signal]
-    public delegate void EndEventHandler();
 
     // Singleton Handler
     private static GameState instance;
@@ -38,8 +35,8 @@ public partial class GameState : Node {
     // Signal triggers
     public void toBlack() { EmitSignal(SignalName.FadeOut); }
     public void fromBlack() { EmitSignal(SignalName.FadeIn); }
-    public void toggleEnd() { EmitSignal(SignalName.End); }
-    public void doorClose() { EmitSignal(SignalName.CloseDoor); }
+    public void doorClose() { EmitSignal(SignalName.DoorIsOpen, false); }
+    public void doorOpen() { EmitSignal(SignalName.DoorIsOpen, true); }
 
     // Variable declarations
     private int Confidence;
@@ -124,5 +121,10 @@ public partial class GameState : Node {
             break;
         }
         }
+    }
+
+    public void playAgain() {
+        resetValues();
+        changeScene(ResourceLoader.Load<PackedScene>("res://Scenes/main.tscn"));
     }
 }

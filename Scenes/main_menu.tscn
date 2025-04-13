@@ -34,8 +34,6 @@ creditsMenu = NodePath("CanvasLayer/Credits")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -60.0
-offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_jix8l")
@@ -121,6 +119,7 @@ horizontal_alignment = 1
 [node name="VolumeSliderAndLabel" type="HSplitContainer" parent="CanvasLayer/Settings"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+dragging_enabled = false
 
 [node name="Volume" type="Label" parent="CanvasLayer/Settings/VolumeSliderAndLabel"]
 layout_mode = 2
@@ -130,7 +129,6 @@ text = "Volume"
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/VolumeSliderAndLabel"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
@@ -167,7 +165,7 @@ label_settings = SubResource("LabelSettings_rhts7")
 horizontal_alignment = 1
 
 [node name="CreditList" type="RichTextLabel" parent="CanvasLayer/Credits"]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(0, 320)
 layout_mode = 2
 theme = ExtResource("1_06t4h")
 theme_override_font_sizes/bold_italics_font_size = 24

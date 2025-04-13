@@ -6,8 +6,11 @@ public partial class Fader : Control {
 
     public override void _Ready() {
 
-        GameState.GetGSInstance().FadeOut += () => fadeOut();
-        GameState.GetGSInstance().FadeIn += () => fadeIn();
+        GameState.GetGSInstance().Connect(GameState.SignalName.FadeOut,
+                                          Callable.From(fadeOut));
+        GameState.GetGSInstance().Connect(GameState.SignalName.FadeIn,
+                                          Callable.From(fadeIn));
+
         anim = GetNode<AnimationPlayer>("%Anim");
         anim.Play("from_black");
     }

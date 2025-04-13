@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dptx0g5c6kt8t"]
+[gd_scene load_steps=19 format=3 uid="uid://dptx0g5c6kt8t"]
 
 [ext_resource type="Texture2D" uid="uid://tu1k1my8ol0m" path="res://Assets/Visual/nike_door_happy.jpg" id="1_gjjrj"]
 [ext_resource type="Texture2D" uid="uid://dw7u0vr88aeyd" path="res://Assets/Visual/nike_door_happy_2.jpg" id="2_vvxqx"]
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_gjjrj")]
+"values": [ExtResource("8_vvxqx")]
 }
 
 [sub_resource type="Animation" id="Animation_gjjrj"]
@@ -134,10 +134,26 @@ tracks/0/keys = {
 "values": [ExtResource("2_vvxqx"), ExtResource("1_gjjrj")]
 }
 
+[sub_resource type="Animation" id="Animation_kopta"]
+resource_name = "door_opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gjjrj")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4c57u"]
 _data = {
 &"RESET": SubResource("Animation_kek77"),
 &"door_closed": SubResource("Animation_gjjrj"),
+&"door_opened": SubResource("Animation_kopta"),
 &"idle_angry_nike": SubResource("Animation_w48qg"),
 &"idle_concerned_nike": SubResource("Animation_4c57u"),
 &"idle_happy_nike": SubResource("Animation_272bh"),
@@ -162,7 +178,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_gjjrj")
+texture = ExtResource("8_vvxqx")
 expand_mode = 5
 stretch_mode = 5
 

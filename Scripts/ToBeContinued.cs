@@ -2,12 +2,13 @@ using Godot;
 using System;
 
 public partial class ToBeContinued : Control {
-    public override void _Ready() {
+    [Export]
+    public PackedScene menu;
 
-        GameState.GetGSInstance().End += () => show();
+    public void _on_playagain_pressed() {
+        GameState.GetGSInstance().playAgain();
     }
-
-    public void show() { Visible = true; }
-
-    public void _on_button_pressed() { GetTree().Quit(); }
+    public void _on_menu_pressed() {
+        GameState.GetGSInstance().changeScene(menu);
+    }
 }

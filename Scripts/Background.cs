@@ -8,16 +8,24 @@ public partial class Background : Control {
     public bool closed;
     public override void _Ready() {
 
-        GameState.GetGSInstance().TalkingStatus += (val) => setTalking(val);
-        GameState.GetGSInstance().EmotionChange += (val) => setEmotion(val);
-        GameState.GetGSInstance().CloseDoor += () => doorClose();
+        GameState.GetGSInstance().Connect(GameState.SignalName.TalkingStatus,
+                                          Callable.From<bool>(setTalking));
+        GameState.GetGSInstance().Connect(GameState.SignalName.EmotionChange,
+                                          Callable.From<int>(setEmotion));
+        GameState.GetGSInstance().Connect(GameState.SignalName.DoorIsOpen,
+                                          Callable.From<bool>(toggleDoor));
         anim = GetNode<AnimationPlayer>("%Anim");
-        closed = false;
+        closed = true;
     }
 
-    public void doorClose() {
-        anim.Play("door_closed");
-        closed = true;
+    public void toggleDoor(bool makeOpen) {
+        if (makeOpen) {
+            anim.Play("door_opened");
+            closed = false;
+        } else {
+            anim.Play("door_closed");
+            closed = true;
+        }
     }
 
     public String speaking = "idle";

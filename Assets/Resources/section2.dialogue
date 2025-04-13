@@ -1,5 +1,4 @@
 ~ playin_games
-do GameState.toggleEnd()
 => END
 
 ~ telling_them
@@ -39,5 +38,4 @@ else
 => END
 
 ~ heart_to_heart
-do GameState.toggleEnd()
 => END!

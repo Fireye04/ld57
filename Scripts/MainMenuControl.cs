@@ -45,6 +45,7 @@ public partial class MainMenuControl : Control {
     }
 
     public virtual void StartGame() {
+        GameState.GetGSInstance().resetValues();
         GameState.GetGSInstance().changeScene(gameNodePath);
     }
 

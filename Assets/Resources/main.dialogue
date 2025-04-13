@@ -2,8 +2,8 @@ import "res://Assets/Resources/endings.dialogue" as endings
 import "res://Assets/Resources/section2.dialogue" as section2
 
 ~ start
-do GameState.confidence = 4
 Knock Knock Knock
+do GameState.doorOpen()
 Flynn: Hey, Nike. How you been?
 Nike: Heya flynn! So, what's it now?
 - Nothing. (Lie)
