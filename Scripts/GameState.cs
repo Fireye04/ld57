@@ -83,6 +83,8 @@ public partial class GameState : Node {
 
     public void resetValues() {
         confidence = 4;
+        bathroomCount = 0;
+        nikeRep = 0;
         emotion = EEmotion.HAPPY;
         talking = false;
         bathroomCount = 0;

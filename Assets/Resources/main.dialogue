@@ -42,13 +42,13 @@ Nike: Heya flynn! So, what's it now?
 				=> E_talking_down
 			- They're probably right (Self control | -1) [if GameState.confidence >= 1]
 				do GameState.confidence -= 1
-			Flynn: Humor me?
-			Nike: Fine. I'm here for you though, you know that right?
-			do GameState.confidence += 2
-			Flynn: Yeah. Thanks. I really appreciate it.
-			do GameState.emotion = 0
-			Nike: Now you gonna grab a controller or what?
-			Flynn: Hah, sounds good.
+				Flynn: Humor me?
+				Nike: Fine. I'm here for you though, you know that right?
+				do GameState.confidence += 2
+				Flynn: Yeah. Thanks. I really appreciate it.
+				do GameState.emotion = 0
+				Nike: Now you gonna grab a controller or what?
+				Flynn: Hah, sounds good.
 		- Tell them the truth, idiot (Truth | -2) [if GameState.confidence >= 2]
 			do GameState.confidence -= 2
 			do GameState.music("emotional")
@@ -98,6 +98,7 @@ Nike: Hey, chill out I'm just trying to help.
 	do GameState.emotion = 2
 	Nike: It's cool. You're pretty clearly not doing great, you dont gotta tell me shit if you don't want to.
 	Nike: I'm here if you change your mind though.
+	do GameState.confidence += 1
 	Flynn: Thanks. Wanna play some games?
 	Nike: Sounds good to me.
 	=> section2/playin_games
