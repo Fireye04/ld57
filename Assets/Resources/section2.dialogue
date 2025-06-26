@@ -15,7 +15,7 @@ Nike: Do I want to know?
 	Flynn: So you know how when you're close to someone you share stuff with them?
 	Flynn: Like deep stuff?
 	Nike: Oh. Oh no. Did she leak something?
-	Flynn: No, no, no, It's not anything like that!
+	Flynn: No, no, no, It's not anything like that
 	Flynn: It's just... 
 	Flynn: Do you know the feeling of pouring your heart out to someone and never getting anything back?
 	Nike: Uhhh...
@@ -69,11 +69,11 @@ Nike: Gahh.. no.. Nope. Nuh uh. You can't see me like this, sorry, I'm gonna go 
 => END
 
 ~ bathroom_pep_talk
-do GameState.bathroomCount += 1
-if GameState.bathroomCount == 1
+do bathroomCount += 1
+if bathroomCount == 1
 	Flynn: Alright, flynn. Get it together. 
 	Flynn: If you don't fucking talk to anyone it's never going to get fucking better.
-	do GameState.confidence += 2
+	do confidence += 2
 else
 	Flynn: Fuck, noone has to piss this much.
 	Flynn: Take a deep breath. It's alright.

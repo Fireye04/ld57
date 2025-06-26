@@ -71,9 +71,47 @@ public partial class GameState : Node {
 
     public AudioStreamPlayer playr;
 
-    public int bathroomCount;
+    private Godot.Collections.Array<String> eventList;
 
-    public int nikeRep;
+    // Adds eventName to eventList
+    public void nev(String eventName) { eventList.Add(eventName); }
+
+    // Checks if eventName occurred
+    public void evContains(String eventName) { eventList.Add(eventName); }
+
+    // Checks if all of the events in eventNames occurred
+    public bool evContains(params String[] eventNames) {
+        for (int i = 0; i < eventNames.Length; i++) {
+            if (!eventList.Contains(eventNames[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+    // Checks if all of the events in eventNames occurred in order
+    public bool evContainsOrdered(params String[] eventNames) {
+        int eventCount = 0;
+        for (int i = 0; i < eventList.Count; i++) {
+
+            if (eventList[i] == eventNames[eventCount]) {
+                eventCount++;
+                if (eventCount >= eventNames.Length) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int NikeRep;
+
+    public int nikeRep {
+        get { return NikeRep; }
+        set {
+            GD.Print(NikeRep);
+            NikeRep = value;
+        }
+    }
 
     public override void _Ready() {
         SetGSInstance(this);
@@ -83,13 +121,15 @@ public partial class GameState : Node {
 
     public void resetValues() {
         confidence = 4;
-        bathroomCount = 0;
         nikeRep = 0;
         emotion = EEmotion.HAPPY;
         talking = false;
-        bathroomCount = 0;
         nikeRep = 0;
-        music("main");
+        eventList = new Godot.Collections.Array<String>();
+        if (playr.Stream != (AudioStreamMP3)ResourceLoader.Load(
+                                "res://Assets/Audio/OST/main_theme.mp3")) {
+            music("main");
+        }
     }
 
     public void changeScene(PackedScene scene) {

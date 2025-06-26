@@ -24,6 +24,7 @@ GameState="*res://Scenes/game_state.tscn"
 
 runtime/advanced/uses_dotnet=true
 runtime/balloon_path="uid://c424ijhn4uga6"
+runtime/state_autoload_shortcuts=["GameState"]
 
 [dotnet]
 
