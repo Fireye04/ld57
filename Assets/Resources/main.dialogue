@@ -1,5 +1,6 @@
 import "res://Assets/Resources/endings.dialogue" as endings
 import "res://Assets/Resources/section2.dialogue" as section2
+using GameState
 
 ~ start
 Knock Knock Knock
@@ -7,6 +8,7 @@ do doorOpen()
 Flynn: Hey, Nike. How you been?
 Nike: Heya flynn! So, what's it now?
 - Nothing. (Lie)
+	do next("nothing1")
 	Flynn: Nothing.
 	Nike: Sure, bud.
 	Flynn: What, you sound like you don't believe me.
@@ -15,32 +17,38 @@ Nike: Heya flynn! So, what's it now?
 	Nike: So out with it. 
 	=> superiority
 - What do mean? (Misdirect | -1) [if confidence >= 1]
+	do next("wdym1")
 	do confidence -= 1
 	Flynn: What do you mean?
 	Nike: Fuck, Flynn, every time you call me up and ask to come over outta fuckin' nowhere, you got something going on.
 	Nike: So out with it. 
 	- Nothing's wrong. (Lie)
+		do next("nothing2")
 		Flynn: It's really nothing this time. Now can we play games or what? 
 		Nike: I don't believe you.
 		Flynn: Well it's the truth.
 		Nike: Sure, bud. 
 		=> superiority
 	- Am I that predictable? (Misdirect | -1) [if confidence >= 1]
+		do next("predictable")
 		do confidence -= 1
 		Flynn: Fuck, am I really that predictable?
 		Nike: You really want me to answer that?
 		Flynn: Guess not.
 		Nike: So out with it. 
 		- Can we not talk about it? (Misdirect)
+			do next("avoid")
 			do emotion = 2
 			do music("emotional")
 			Flynn: Can we just play video games and pretend there's nothing wrong?
 			Nike: If you insist, but if you've really got something eathing at you it's gonna come out one way or another.
 			Nike: In my opinion it'd be better to have out with it in a healthy way than do so otherwise.
 			- Don't talk down to me (Escalate +1)
+				do next("E_talking_down")
 				do confidence += 1
 				=> E_talking_down
 			- They're probably right (Self control | -1) [if confidence >= 1]
+				do next("theyre_right1")
 				do confidence -= 1
 				Flynn: Humor me?
 				Nike: Fine. I'm here for you though, you know that right?
@@ -50,6 +58,7 @@ Nike: Heya flynn! So, what's it now?
 				Nike: Now you gonna grab a controller or what?
 				Flynn: Hah, sounds good.
 		- Tell them the truth, idiot (Truth | -2) [if confidence >= 2]
+			do next("truth")
 			do confidence -= 2
 			do music("emotional")
 			Flynn: I'm...
@@ -66,10 +75,11 @@ Nike: Heya flynn! So, what's it now?
 => END
 
 ~ superiority
-Flynn: ...
-do emotion = 2
+Flynn: ... {{emotion}}
+set emotion = 2
 Nike: I'll drop it, but you should really make a habit of confiding in your friends.
 - Yeah they're right (truth | -2) [if confidence >= 2]
+	do next("theyre_right2")
 	do confidence -= 2
 	Flynn: yeah... 
 	Flynn: Sorry.
@@ -81,6 +91,7 @@ Nike: I'll drop it, but you should really make a habit of confiding in your frie
 	Flynn: Hah, sounds good.
 	=> section2/playin_games
 - No, fuck that. (Escalate | +1)
+	do next("E_fuck_that")
 	do confidence += 1
 	=> E_confiding_in_friends
 => END
@@ -92,6 +103,7 @@ Flynn: Nothing's wrong, man. Get the fuck off my back.
 do emotion = 1
 Nike: Hey, chill out I'm just trying to help.
 - De-escalate (-2) [if confidence >= 2]
+	do next("E_fuck_that1")
 	do confidence -= 2
 	do music("main")
 	Flynn: Fine. Sorry.
@@ -108,6 +120,7 @@ Nike: Hey, chill out I'm just trying to help.
 	Nike: Pushing me away isn't going to help anything.
 	Nike: But fine, if you really don't want to talk about it, let's just play some games and pretend everything's fine.
 	- De-escalate (-2) [if confidence >= 2]
+		do next("E_fuck_that2")
 		do confidence -= 2
 		do music("main")
 		Flynn: Yes. Let's.
@@ -119,6 +132,7 @@ Nike: Hey, chill out I'm just trying to help.
 		Nike: Perfect life? Do you even fucking know me?!
 		Nike: I haven't moved states six times in four fucking years for my life to be called "perfect"
 		- De-escalate (-2) [if confidence >= 2]
+			do next("E_fuck_that3")
 			do confidence -= 2
 			do music("main")
 			Flynn: Fuck, I didn't mean that Nike, I'm sorry. 
@@ -126,6 +140,7 @@ Nike: Hey, chill out I'm just trying to help.
 			Nike: Hah. Yeah, me too. Let's just play some games and cool off, yeah?
 			=> section2/playin_games
 		- Escalate (+3)
+			do next("E_fuck_that_end")
 			do confidence += 3
 			Flynn: "Oh boo-fucking-hoo I moved around a few times!"
 			Flynn: "I'm so sad I don't have enough skateboarding medals."
@@ -142,6 +157,7 @@ Flynn: Don't talk down to me man. I can deal with stuff on my own.
 do emotion = 1
 Nike: Hey, chill out. I'm just tryna be there for you.
 - De-escalate (-2) [if confidence >= 2]
+	do next("E_talking_down1")
 	do confidence -= 2
 	do music("main")
 	Flynn: Sorry, I know. Thanks.
@@ -155,6 +171,7 @@ Nike: Hey, chill out. I'm just tryna be there for you.
 	Flynn: And I didn't ask. I don't need your snark on top of everything else.
 	Nike: Hey, that's not fair. If you don't feel like showing me basic respect, you can leave. 
 	- De-escalate (-2) [if confidence >= 2]
+		do next("E_talking_down2")
 		do confidence -= 2
 		do music("main")
 		Flynn: Fuck, I'm Sorry. That's on me.
@@ -165,6 +182,7 @@ Nike: Hey, chill out. I'm just tryna be there for you.
 		Nike: Sounds good to me.
 		=> section2/playin_games
 	- Escalate (+3)
+		do next("E_talking_down_end")
 		do confidence += 3
 		Flynn: Maybe I will.
 		Nike: Cool. Bye Flynn.

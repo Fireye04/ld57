@@ -41,6 +41,9 @@ public partial class GameState : Node {
     // Variable declarations
     private int Confidence;
 
+    // need to expose function for some reason
+    public void setConfidence(int value) { confidence = value; }
+
     public int confidence {
         get { return Confidence; }
         set {
@@ -74,7 +77,10 @@ public partial class GameState : Node {
     private Godot.Collections.Array<String> eventList;
 
     // Adds eventName to eventList
-    public void nev(String eventName) { eventList.Add(eventName); }
+    public void next(String eventName) {
+        eventList.Add(eventName);
+        GD.Print(eventList);
+    }
 
     // Checks if eventName occurred
     public void evContains(String eventName) { eventList.Add(eventName); }

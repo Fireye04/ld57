@@ -26,6 +26,8 @@ var concurrent_lines: PackedStringArray = []
 var tags: PackedStringArray = []
 ## The condition or mutation expression for this line.
 var expression: Dictionary = {}
+## The express as the raw text that was given.
+var expression_text: String = ""
 ## The next sequential line to go to after this line.
 var next_id: String = ""
 ## The next line to go to after this line if it is unknown and compile time.
@@ -38,8 +40,7 @@ var next_sibling_id: String = ""
 var next_id_after: String = ""
 ## Any doc comments attached to this line.
 var notes: String = ""
-## Audio file UID
-var audio: String = ""
+
 
 #region Hooks
 
@@ -130,8 +131,8 @@ func to_data() -> Dictionary:
 				d.tags = tags
 			if not notes.is_empty():
 				d.notes = notes
-			if not audio.is_empty():
-				d.audio = audio
+			if not expression_text.is_empty():
+				d.condition_as_text = expression_text
 
 		DMConstants.TYPE_DIALOGUE:
 			d.text = text
@@ -153,8 +154,6 @@ func to_data() -> Dictionary:
 				d.siblings = siblings
 			if not concurrent_lines.is_empty():
 				d.concurrent_lines = concurrent_lines
-			if not audio.is_empty():
-				d.audio = audio
 
 	return d
 
