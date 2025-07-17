@@ -1,3 +1,5 @@
+import "res://Assets/Resources/endings.dialogue" as endings
+
 ~ playin_games
 
 => END
@@ -80,4 +82,53 @@ else
 => END
 
 ~ heart_to_heart
+Nike: So...
+Flynn: *hah* I dunno, man. It's probably stupid, forget I said anything?
+Nike: Bitch, nuh-uh. You clearly need to get it off your chest. Let me help, yeah?
+- Fine (continue)
+- Why am I like this? (Introspection timeeee)
+	Flynn: Gahh you're so right, why am I like this.
+	Flynn: I can't open up my fucking shell even a little bit.
+	Flynn: God I'm such a fuckup, I'm sorry.
+	- Cry
+		=> cry
+	- Hold it in (Be cool! Be cool!)
+		Nike: Hey, hey--
+		Flynn: Fuck! fuckity fuck! I'm fucking useless I can't even do normal human things without overthinking it all.
+		Flynn: And now I've made it stupid by sidelining the actual thing, damn it, stupid stupid stupid!
+		Flynn: I'm sorry Nike. I'm a horrible friend, I don't deserve you. I'm sorry.
+		- Cry
+			=> cry
+		- Hold it in (you can do it, you're a big girl)
+			Nike: Wow you're clearly not ok, can I give you a hug?
+			Flynn: HA! HAHAHAHA! 
+			Flynn: Human contact! As if I could touch another person without it feeling alien. 
+			Flynn: I actually just shuddered thinking about it! What kind of fucking human can't think about touching other humans without feeling uncomfortable?
+			Flynn: I think I might just be a broken husk of a body wandering the earth till its stupid fucking heart stops beating.
+			- Cry
+				=> cry
+			- Hold it in (Keep going! Emotions are for losers)
+				Flynn: Because *sniff* I'm sure as shit not *sniff* not hu-
+				=> cry
+	
+	
 => END!
+
+~ cry
+# Hug
+Nike: You're none of those things, Flynn. 
+# TODO: Add alt for first cry opt
+Flynn: Why- Why am I crying?
+Nike: Because that's how emotions work. Let 'em out, it's ok.
+Nike: They get ugly sometimes and that's ok. Give youself the grace to feel.
+Nike: Everything you're feeling is ok. It's perfectly natural to feel. 
+Nike: Once your thoughts catch up, you can decide how you feel about your feelings.
+Nike: Then maybe you can start to drag yourself out of those mental spirals.
+Nike: Till then, I'm here for you, yeah?
+Flynn: *sniff* yeah.
+Nike: In the meantime, reckon we should play some games and cool off?
+Flynn: Nike?
+Nike: Yeah?
+Flynn: Thanks.
+=> endings/good_ending
+=> END

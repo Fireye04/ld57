@@ -1,6 +1,5 @@
 import "res://Assets/Resources/endings.dialogue" as endings
 import "res://Assets/Resources/section2.dialogue" as section2
-using GameState
 
 ~ start
 Knock Knock Knock
@@ -69,13 +68,12 @@ Nike: Heya flynn! So, what's it now?
 			Flynn: I dunno man. I just feel like I wake up every day and do the exact same thing.
 			Flynn: Day in and day out.
 			Nike: Whoa, that sounds awful. How about you come in and tell me about it yeah?
-			do confidence += 3
 			=> section2/heart_to_heart
 => section2/playin_games
 => END
 
 ~ superiority
-Flynn: ... {{emotion}}
+Flynn: ...
 set emotion = 2
 Nike: I'll drop it, but you should really make a habit of confiding in your friends.
 - Yeah they're right (truth | -2) [if confidence >= 2]
