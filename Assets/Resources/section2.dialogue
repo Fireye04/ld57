@@ -1,8 +1,28 @@
 import "res://Assets/Resources/endings.dialogue" as endings
 
 ~ playin_games
+Some time Later
+% Nike: Hah! Gotcha!
+% Nike: Damn it! 
+% Nike: Ohhhh good dodge.
+% Nike: ... Hell yeah.
+- I should probably say something (-2) [if true]
+	Flynn: Hey so nike...
+	Nike: Yeah?
+	- Do it 
+	- Nope nope nope bathroom time
+	
+- Hell no fuck that shit we gaming
 
+
+=> game_end
 => END
+
+~ escape_hole
+=> END
+
+and even more gay than both in
+
 
 ~ telling_them
 Flynn: Uh so Nike?
@@ -82,6 +102,7 @@ else
 => END
 
 ~ heart_to_heart
+<<<<<<< Updated upstream
 Nike: So...
 Flynn: *hah* I dunno, man. It's probably stupid, forget I said anything?
 Nike: Bitch, nuh-uh. You clearly need to get it off your chest. Let me help, yeah?
@@ -131,4 +152,11 @@ Flynn: Nike?
 Nike: Yeah?
 Flynn: Thanks.
 => endings/good_ending
+do GameState.toggleEnd()
+=> END!
+
+~ game_end
+
+do GameState.toggleEnd()
+
 => END
